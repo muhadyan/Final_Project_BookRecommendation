@@ -7,7 +7,7 @@ df_books = pd.read_csv('book_data.csv')
 df_books = df_books.dropna(
     subset=['book_pages', 'genres', 'image_url']
     )
-df_books['corpus'] = (pd.Series(df_books[['book_authors', 'genres']].fillna('').values.tolist()).str.join(' '))
+df_books['corpus'] = (pd.Series(df_books[['book_authors', 'genres']].values.tolist()).str.join('|'))
 
 def buku_favorit(title):
     return df_books[df_books['book_title'] == title]
